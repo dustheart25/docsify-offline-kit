@@ -43,8 +43,11 @@ books/
     └── README.md
 ### 3. 一键部署
 运行部署脚本，它会自动组装资源、生成目录、修复权限并启动 Docker。  
+
+```bash
 chmod +x deploy.sh
 ./deploy.sh
+```
 ### 4. 访问
 打开浏览器访问：http://localhost:3009 (注：端口可在 docker-compose.yml 中修改)
 
@@ -65,6 +68,7 @@ chmod +x deploy.sh
 ```bash
 # 赋予当前目录及其父级可读权限
 chmod 755 .
+```
 
 ### 项目结构说明
 .
