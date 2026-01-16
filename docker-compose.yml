@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  docsify:
+    image: nginx:alpine
+    container_name: docsify-offline
+    restart: always
+    ports:
+      - "3009:80"  # 默认端口，如果冲突可修改
+    volumes:
+      - ./dist:/usr/share/nginx/html
+      # 使用内联配置，省去单独的 nginx.conf 文件
+      - ./nginx_config.conf:/etc/nginx/conf.d/default.conf
