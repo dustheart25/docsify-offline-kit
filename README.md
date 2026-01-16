@@ -35,12 +35,14 @@ cd docsify-offline-kit
 将你的 Markdown 文件夹（或 PDF 转换后的文件夹）直接放入 books/ 目录下。 支持多本书，每本书一个子文件夹。
 
 目录结构示例：
+```
 books/
 ├── drug-guide/       <-- 书籍 A (文件夹名即为书名)
 │   ├── README.md     <-- 书籍首页
 │   └── 01_Chapter.md
 └── my-notes/         <-- 书籍 B
     └── README.md
+```
 ### 3. 一键部署
 运行部署脚本，它会自动组装资源、生成目录、修复权限并启动 Docker。  
 
