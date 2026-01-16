@@ -23,6 +23,7 @@
 ```bash
 git clone https://github.com/你的用户名/docsify-offline-kit.git
 cd docsify-offline-kit
+```
 
 ### 2. 放入你的书籍
 将你的 Markdown 文件夹（或 PDF 转换后的文件夹）直接放入 books/ 目录下。 支持多本书，每本书一个子文件夹。
