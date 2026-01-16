@@ -80,5 +80,10 @@ chmod -R 755 dist
 echo -e "${GREEN}==> 6. 启动 Docker 服务...${NC}"
 docker compose up -d --build
 
+echo "🔧 正在执行最终权限修复 (chmod 755)..."
+chmod 755 /opt/docsify-offline-kit
+chmod -R 755 /opt/docsify-offline-kit
+docker compose restart
+
 echo -e "${GREEN}✅ 部署完成！${NC}"
 echo -e "访问地址: http://localhost:3009"
