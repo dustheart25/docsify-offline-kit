@@ -71,6 +71,7 @@ chmod 755 .
 ```
 
 ### 项目结构说明
+```plaintext
 .
 ├── books/                 # [用户区] 把你的书放这里
 ├── static/                # [核心区] 本地化静态资源 (JS/CSS/Fonts)
@@ -79,3 +80,4 @@ chmod 755 .
 ├── deploy.sh              # [脚本] 自动化部署脚本 (硬链接+权限修复)
 ├── docker-compose.yml     # Docker 启动配置
 └── nginx_config.conf      # Nginx 配置 (优化 Markdown 渲染)
+```
