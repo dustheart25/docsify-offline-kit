@@ -13,9 +13,58 @@
     * **自动导航**：自动生成带 UTF-8 编码的首页，并列出所有书籍。
 * **💾 零空间浪费**：部署脚本使用**硬链接 (Hard Link)** 技术，发布目录不占用额外的硬盘空间。
 
+---
+
 ## 🚀 快速开始 (3分钟上线)
 
 ### 1. 克隆项目
+首先将项目克隆到你的服务器（建议放在 `/opt/` 或 `/home/` 目录下）：
+
 ```bash
-git clone [https://github.com/你的用户名/docsify-offline-kit.git](https://github.com/你的用户名/docsify-offline-kit.git)
+git clone https://github.com/你的用户名/docsify-offline-kit.git
 cd docsify-offline-kit
+
+### 2. 放入你的书籍
+将你的 Markdown 文件夹（或 PDF 转换后的文件夹）直接放入 books/ 目录下。 支持多本书，每本书一个子文件夹。
+
+目录结构示例：
+books/
+├── drug-guide/       <-- 书籍 A (文件夹名即为书名)
+│   ├── README.md     <-- 书籍首页
+│   └── 01_Chapter.md
+└── my-notes/         <-- 书籍 B
+    └── README.md
+### 3. 一键部署
+运行部署脚本，它会自动组装资源、生成目录、修复权限并启动 Docker。  
+chmod +x deploy.sh
+./deploy.sh
+### 4. 访问
+打开浏览器访问：http://localhost:3009 (注：端口可在 docker-compose.yml 中修改)
+
+## ⚠️ 避坑指南 (必读)
+
+### 1. 部署路径选择
+**❌ 严禁** 将项目克隆到 `/root/` 目录下。
+原因：Docker 容器内的 Nginx 运行在普通用户权限下，无法读取 `/root/` 下的文件，会导致 **403 Forbidden** 错误。
+
+**✅ 推荐路径**：
+* `/opt/docsify-offline-kit/`
+* `/home/ubuntu/docsify-offline-kit/`
+
+### 2. 权限问题
+部署脚本会自动处理 `dist` 目录的权限（自动执行 `chmod 755`）。
+如果你依然遇到 403 错误，通常是因为**父目录**权限过严。请尝试放开父目录权限：
+
+```bash
+# 赋予当前目录及其父级可读权限
+chmod 755 .
+
+### 项目结构说明
+.
+├── books/                 # [用户区] 把你的书放这里
+├── static/                # [核心区] 本地化静态资源 (JS/CSS/Fonts)
+├── template/              # [模板] 书籍通用入口模板 (已配置本地化引用)
+├── scripts/               # [工具] 自动生成侧边栏脚本
+├── deploy.sh              # [脚本] 自动化部署脚本 (硬链接+权限修复)
+├── docker-compose.yml     # Docker 启动配置
+└── nginx_config.conf      # Nginx 配置 (优化 Markdown 渲染)
