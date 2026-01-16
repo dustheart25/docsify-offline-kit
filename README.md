@@ -17,11 +17,17 @@
 
 ## 🚀 快速开始 (3分钟上线)
 
-### 1. 克隆项目
-首先将项目克隆到你的服务器（建议放在 `/opt/` 或 `/home/` 目录下）：
+### 1. 克隆项目 (傻瓜式操作)
+为了避免权限报错，**强烈建议**直接按照下方命令操作，将项目部署在 `/opt/` 目录下：
 
 ```bash
-git clone https://github.com/你的用户名/docsify-offline-kit.git
+# 1. 进入 /opt 目录
+cd /opt
+
+# 2. 克隆项目 (请将下面链接中的“你的用户名”替换为实际用户名)
+git clone https://github.com/dustheart25/docsify-offline-kit.git
+
+# 3. 进入项目文件夹
 cd docsify-offline-kit
 ```
 
